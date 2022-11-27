@@ -2,7 +2,7 @@
 
 ### Demo (Codepen)
 
---
+https://codepen.io/ferdotnet/pen/MWXXzbg
 
 ### Install
 
@@ -14,13 +14,16 @@
 const App = () => {
     const [query, setQuery] = useState('');
     const qDebounced = useDebounce(query);
-
-    const handleChange = (newValue: string) => {
-        setQuery(newValue);
+    
+    const handleChange = (el) => {
+        setQuery(el.target.value);
     };
-  
+    
     return (
-        <input type="text" onChange={handleChange} />
+        <div className="wrapper">
+            <input type="text" placeholder="Write something here.." onChange={handleChange} />
+            <span>{qDebounced || '👀'}</span>
+        </div>
     );
 });
 ```
